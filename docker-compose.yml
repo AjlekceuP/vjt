@@ -18,15 +18,15 @@ services:
       - /tmp
     restart: unless-stopped
     ports:
-      - 8091:8091
+      - 9117:9117
     security_opt:
       - label:disable
     stdin_open: true
     tty: true
     volumes:
       - /dev/net:/dev/net:z
-    # Put .ovpn configuration file in the /vpn directory (in "volumes:" above or
-    # launch using the command line arguments, IE pick one:
+      # Put .ovpn configuration file in the /vpn directory (in "volumes:" above or
+      # launch using the command line arguments, IE pick one:
       - ./config:/vpn
     # command: 'server;user;password[;port]'
   jackett:
@@ -43,9 +43,9 @@ services:
     network_mode: "service:vpn"
     volumes:
       - ./data/jackett/config:/config
-      - ./data/jackett/blackhole:/downloads
-#    ports:
-#      - 9117:9117
+      - /data/jackett/blackhole:/downloads
+    #    ports:
+    #      - 9117:9117
     restart: unless-stopped
     stdin_open: true
 
@@ -53,7 +53,7 @@ services:
     image: ghcr.io/yourok/torrserver:latest
     container_name: torrserver
     volumes:
-      - ./data/torrserver:/opt/ts
+      - ./data/torrserve/:/opt/ts
     ports:
       - 8090:8090
     restart: unless-stopped
