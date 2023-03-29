@@ -18,7 +18,7 @@ services:
       - /tmp
     restart: unless-stopped
     ports:
-      - 8090:8090
+      - 8091:8091
     security_opt:
       - label:disable
     stdin_open: true
@@ -55,7 +55,7 @@ services:
     volumes:
       - ./data/torrserver:/opt/ts
     ports:
-      - 8091:8091
+      - 8090:8090
     restart: unless-stopped
 
 networks:
