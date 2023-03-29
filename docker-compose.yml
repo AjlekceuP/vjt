@@ -18,7 +18,7 @@ services:
       - /tmp
     restart: unless-stopped
     ports:
-      - 9117:9117
+      - 8000:8000
     security_opt:
       - label:disable
     stdin_open: true
@@ -42,8 +42,8 @@ services:
       - RUN_OPTS= #optional
     network_mode: "service:vpn"
     volumes:
-      - /path/to/data:/config
-      - /path/to/blackhole:/downloads
+      - ./data/jackett/config:/config
+      - ./data/jackett/blackhole:/downloads
 #    ports:
 #      - 9117:9117
     restart: unless-stopped
@@ -53,9 +53,9 @@ services:
     image: ghcr.io/yourok/torrserver:latest
     container_name: torrserver
     volumes:
-      - ./db:/opt/ts
+      - ./data/torrserver:/opt/ts
     ports:
-      - 8090:8090
+      - 8001:8001
     restart: unless-stopped
 
 networks:
