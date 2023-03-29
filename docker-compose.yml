@@ -43,7 +43,7 @@ services:
     network_mode: "service:vpn"
     volumes:
       - ./data/jackett/config:/config
-      - /data/jackett/blackhole:/downloads
+      - ./data/jackett/blackhole:/downloads
     #    ports:
     #      - 9117:9117
     restart: unless-stopped
@@ -54,6 +54,8 @@ services:
     container_name: torrserver
     volumes:
       - ./data/torrserve/:/opt/ts
+    environment:
+      - TS_HTTPAUTH=1
     ports:
       - 8090:8090
     restart: unless-stopped
