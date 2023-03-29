@@ -42,8 +42,8 @@ services:
       - RUN_OPTS= #optional
     network_mode: "service:vpn"
     volumes:
-      - ~/data/jackett/config:/config
-      - ~/data/jackett/blackhole:/downloads
+      - /home/paa/data/jackett/config:/config
+      - /home/paa/data/jackett/blackhole:/downloads
     #    ports:
     #      - 9117:9117
     restart: unless-stopped
@@ -53,7 +53,7 @@ services:
     image: ghcr.io/yourok/torrserver:latest
     container_name: torrserver
     volumes:
-      - ./data/torrserve/:/opt/ts
+      - /home/paa/data/torrserve/:/opt/ts
     environment:
       - TS_HTTPAUTH=1
     ports:
